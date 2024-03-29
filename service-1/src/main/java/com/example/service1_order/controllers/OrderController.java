@@ -1,4 +1,5 @@
 package com.example.service1_order.controllers;
+
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.CachePut;
@@ -18,15 +19,13 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-//    private Jedis jedis = new Jedis();
-
     @GetMapping("/orders")
-    public List<Order> getLisOrder(){
-        return  orderService.getListOrder();
+    public List<Order> getLisOrder() {
+        return orderService.getListOrder();
     }
 
     @GetMapping("/orders/{id}")
-    public Order getUserById(@PathVariable(value = "id") long id){
+    public Order getUserById(@PathVariable(value = "id") long id) {
         return orderService.getOrderById(id);
     }
 
@@ -36,7 +35,7 @@ public class OrderController {
     }
 
     @DeleteMapping("/orders/{orderId}")
-    public void deleteOrder(@PathVariable(value = "orderId") long orderId){
+    public void deleteOrder(@PathVariable(value = "orderId") long orderId) {
         orderService.deleteOrderById(orderId);
     }
 }
